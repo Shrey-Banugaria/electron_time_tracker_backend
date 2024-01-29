@@ -7,7 +7,7 @@ const WorkSessionController = {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
 
-    const { startTime, endTime, breakDuration, date } = req.body
+    const { startTime, endTime, breakDuration, workDuration, date } = req.body
 
     try {
         const newWorkSession = await WorkSession.create({
@@ -15,6 +15,7 @@ const WorkSessionController = {
             startTime,
             endTime,
             breakDuration,
+            workDuration,
             date
         })
 
